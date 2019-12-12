@@ -1,0 +1,40 @@
+# Configuration File
+# Variables:
+#   {player} - Player name
+
+new-player:
+
+    haveTitle: true
+    
+    title-settings:
+    
+        title: DEV SERVER
+        
+        subtitle: Welcome, {player}!
+        
+        fadein-time: 30
+        
+        stay-time: 50
+        
+        fadeout-time: 20
+    
+    # Message to send
+    message: Welcome to the server, {palyer}!
+
+returning-player:
+
+    haveTitle: true
+    
+    title-settings:
+    
+        title: DEV SERVER
+        
+        subtitle: Welcome back, {player}!
+        
+        fadein-time: 30
+        
+        stay-time: 50
+        
+        fadeout-time: 20
+    
+    message: Welcome back to the server, {palyer}!
