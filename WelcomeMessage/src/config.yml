@@ -1,14 +1,22 @@
-# Configuration File
-# Variables:
-#   {player} - Player name
+# Configuration file for WelcomeMessage
+# Author: Kroavex
 
+# =========
+# VARIABLES
+# =========
+# {player} - Player name.
+
+# Messages sent when a player joins the server for the first time.
 new-player:
 
+    # Determines whether the message is sent in the form a title
+    # true - Title
+    # false - Regular message
     haveTitle: true
     
     title-settings:
     
-        title: DEV SERVER
+        title: "DEV SERVER"
         
         subtitle: Welcome, {player}!
         
@@ -18,16 +26,20 @@ new-player:
         
         fadeout-time: 20
     
-    # Message to send
+    # Message to send if haveTitle is false.
     message: Welcome to the server, {palyer}!
 
+# Messages sent when a player who has played before joins.
 returning-player:
-
+    
+    # Determines whether the message is sent in the form a title
+    # true - Title
+    # false - Regular message
     haveTitle: true
     
     title-settings:
     
-        title: DEV SERVER
+        title: "&4DEVELOPMENT"
         
         subtitle: Welcome back, {player}!
         
@@ -37,4 +49,5 @@ returning-player:
         
         fadeout-time: 20
     
+    # Message to send if haveTitle is false.
     message: Welcome back to the server, {palyer}!

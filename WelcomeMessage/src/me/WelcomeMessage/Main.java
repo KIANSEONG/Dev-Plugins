@@ -3,6 +3,7 @@ package me.WelcomeMessage;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -30,33 +31,37 @@ public class Main extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		String playerName = player.getName();
-		String typeOfPlayer = "";
 		
 		if (player.hasPlayedBefore()) {
 			if (config.getBoolean("returning-player.haveTitle")) {
-				typeOfPlayer = "returning-player.title-settings";
-				player.sendTitle(config.getString(typeOfPlayer + ".title").replaceAll("\\{player\\}", playerName),
-								 config.getString(typeOfPlayer + ".subtitle").replaceAll("\\{player\\}", playerName),
-								 config.getInt(typeOfPlayer + ".fadein-time"),
-								 config.getInt(typeOfPlayer + ".stay-time"),
-								 config.getInt(typeOfPlayer + ".fadeout-time"));
+				sendTitle(player, "returning-player.title-settings");
 			} else {
-				player.sendMessage(config.getString(typeOfPlayer + ".message"));
+				player.sendMessage(config.getString("returning-player.message"));
 			}
 		} else {
-			if (config.getBoolean(typeOfPlayer + ".haveTitle")) {
-				typeOfPlayer = "new-player.title-settings";
-				player.sendTitle(config.getString(typeOfPlayer + ".title").replaceAll("\\{player\\}", playerName),
-								 config.getString(typeOfPlayer + ".subtitle").replaceAll("\\{player\\}", playerName),
-								 config.getInt(typeOfPlayer + ".fadein-time"),
-								 config.getInt(typeOfPlayer + ".stay-time"),
-								 config.getInt(typeOfPlayer + ".fadeout-time"));
+			if (config.getBoolean("new-player.haveTitle")) {
+				sendTitle(player, "new-palyer.title-settings");
 			} else {
-				player.sendMessage(config.getString(typeOfPlayer + ".message"));
+				player.sendMessage(config.getString("new-palyer.message"));
 			}
 		}
 		
+	}
+	
+	private void sendTitle(Player player, String typeOfPlayer) {
+		player.sendTitle(colourise(replaceVariables(config.getString(typeOfPlayer + ".title"), player)),
+				colourise(replaceVariables(config.getString(typeOfPlayer + ".subtitle"), player)),
+				 config.getInt(typeOfPlayer + ".fadein-time"),
+				 config.getInt(typeOfPlayer + ".stay-time"),
+				 config.getInt(typeOfPlayer + ".fadeout-time"));
+	}
+	
+	private String colourise(String s) {
+		return ChatColor.translateAlternateColorCodes('&', s);
+	}
+	
+	private String replaceVariables(String s, Player player) {
+		return s.replaceAll("\\{player\\}", player.getName());
 	}
 
 }

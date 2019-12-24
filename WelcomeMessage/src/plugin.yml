@@ -1,5 +1,5 @@
 name: WelcomeMessage
-version: 1.0
+version: 1.1
 description: A welcome message plugin for new and returning players
 author: Kroavex
 main: me.WelcomeMessage.Main
