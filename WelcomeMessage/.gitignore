@@ -1,1 +1,7 @@
-/bin/
+# IDE files
+.externalToolBuilders
+
+# WelcomeMessage Files
+
+# Build files
+target/
