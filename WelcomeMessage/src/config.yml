@@ -4,7 +4,7 @@
 # =========
 # VARIABLES
 # =========
-# {player} - Player name.
+# %player% - Player name.
 
 # Messages sent when a player joins the server for the first time.
 new-player:
@@ -35,7 +35,7 @@ returning-player:
     # Determines whether the message is sent in the form a title
     # true - Title
     # false - Regular message
-    haveTitle: true
+    haveTitle: false
     
     title-settings:
     
@@ -50,4 +50,6 @@ returning-player:
         fadeout-time: 20
     
     # Message to send if haveTitle is false.
-    message: Welcome back to the server, {palyer}!
+    message:
+        - '&2&l***DEVELOPMENT SERVER***'
+        - '&aWelcome back, %player%.'
